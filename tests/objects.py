@@ -4,6 +4,7 @@ Objects to use in unit testing.
 
 from datetime import date, datetime, time
 from decimal import Decimal
+from typing import List
 
 class Person:
     """
@@ -12,6 +13,13 @@ class Person:
 
     name: str
     age: int
+
+class PersonCatalog:
+    """
+    Object declaration containing lists.
+    """
+
+    people: List[Person]
 
 class SeveralDataTypes:
     """

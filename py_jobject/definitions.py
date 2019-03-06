@@ -4,6 +4,7 @@ Type definitions controller module.
 
 from datetime import date, datetime, time
 from decimal import Decimal
+from typing import List
 
 from .defs import (
     DateDefinition,
@@ -11,6 +12,7 @@ from .defs import (
     DecimalDefinition,
     FloatDefinition,
     IntDefinition,
+    ListDefinition,
     ObjectDefinition,
     StringDefinition,
     TimeDefinition
@@ -38,6 +40,9 @@ def get_type_definition(type_):
 
     definition = TYPE_DEFINITIONS.get(type_)
     if definition is None:
+        if type_.__name__ == List.__name__:
+            return ListDefinition(type_.__args__[0])
+
         if hasattr(type_, '__annotations__'):
             return ObjectDefinition(type_)
 
