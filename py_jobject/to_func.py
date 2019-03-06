@@ -6,3 +6,5 @@ def to_dict(source):
     """
     Converts from a `source` object to a dictionary.
     """
+
+    return {}
