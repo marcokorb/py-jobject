@@ -11,9 +11,11 @@ from .defs import (
     DecimalDefinition,
     FloatDefinition,
     IntDefinition,
+    ObjectDefinition,
     StringDefinition,
     TimeDefinition
 )
+from .errors import UndefinedTypeError
 
 __all__ = [
     'get_type_definition'
@@ -34,4 +36,11 @@ def get_type_definition(type_):
     Gets a type definition.
     """
 
-    return TYPE_DEFINITIONS.get(type_)
+    definition = TYPE_DEFINITIONS.get(type_)
+    if definition is None:
+        if hasattr(type_, '__annotations__'):
+            return ObjectDefinition(type_)
+
+        raise UndefinedTypeError(type_)
+
+    return definition

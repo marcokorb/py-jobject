@@ -25,3 +25,10 @@ class SeveralDataTypes:
     integer: int
     floating: float
     string: str
+
+class UndefinedTypes:
+    """
+    Object declaration containing undefined types.
+    """
+
+    value: set
