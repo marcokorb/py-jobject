@@ -7,9 +7,6 @@ from setuptools import setup, find_packages
 with open('README.md', 'r') as readme_file:
     README = readme_file.read()
 
-with open('requirements.txt', 'r') as requirements_file:
-    REQUIREMENTS = requirements_file.readlines()
-
 setup(
     name='py-jobject',
     version='0.1.0',
@@ -22,7 +19,7 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/fcicc/py-jobject',
     packages=find_packages(),
-    install_requires=REQUIREMENTS,
+    install_requires=[],
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",

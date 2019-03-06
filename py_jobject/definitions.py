@@ -20,7 +20,8 @@ from .defs import (
 from .errors import UndefinedTypeError
 
 __all__ = [
-    'get_type_definition'
+    'get_type_definition',
+    'set_type_definition'
 ]
 
 TYPE_DEFINITIONS = {
@@ -49,3 +50,10 @@ def get_type_definition(type_):
         raise UndefinedTypeError(type_)
 
     return definition
+
+def set_type_definition(type_, definition):
+    """
+    Sets a type definition.
+    """
+
+    TYPE_DEFINITIONS[type_] = definition
