@@ -23,6 +23,11 @@ obj.foo = 123
 obj.bar = 'abc'
 
 my_dict = to_dict(obj)
+
+assert my_dict == {
+   'foo': 123,
+   'bar': 'abc'
+}
 ```
 
 - Convert from a `dict` object:
@@ -36,4 +41,53 @@ my_dict = {
 }
 
 obj = from_dict(obj, MyObject)
+
+assert obj.foo == 123
+assert obj.bar == 'abc'
+```
+
+# Features
+
+- Supports type conversion:
+
+```python
+from py_jobject import from_dict
+
+my_dict = {
+    'foo': '123',
+}
+
+obj = from_dict(obj, MyObject)
+
+assert obj.foo == 123
+```
+
+- Extensibility:
+
+```python
+TZINFO_LOCAL = gettz('America/Sao_Paulo')
+
+class BrazilianDatetimeDefinition:
+    """
+    Brazilian localized `datetime` definition.
+    """
+
+    @staticmethod
+    def to_dict(source):
+        """
+        Converts to a dictionary data.
+        """
+
+        return source.astimezone(tz=TZINFO_LOCAL).strftime('%Y-%m-%d %H:%M:%S')
+
+    @staticmethod
+    def from_dict(source):
+        """
+        Converts from a dictionary data.
+        """
+
+        return datetime.strptime(source, '%Y-%m-%d %H:%M:%S').replace(tzinfo=TZINFO_LOCAL)
+
+from py_jobject import set_type_definition
+set_type_definition(datetime, BrazilianDatetimeDefinition)
 ```
