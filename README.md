@@ -13,7 +13,7 @@ class MyObject:
     bar: str
 ```
 
-- Convert into a `dict` object:
+- Convert to a `dict` object:
 
 ```python
 from py_jobject import to_dict
@@ -66,6 +66,9 @@ assert obj.foo == 123
 
 ```python
 TZINFO_LOCAL = gettz('America/Sao_Paulo')
+
+class MyObject:
+    datetime: datetime
 
 class BrazilianDatetimeDefinition:
     """
