@@ -88,6 +88,14 @@ class BrazilianDatetimeDefinition:
 
         return datetime.strptime(source, '%Y-%m-%d %H:%M:%S').replace(tzinfo=TZINFO_LOCAL)
 
-from py_jobject import set_type_definition
+from py_jobject import set_type_definition, from_dict
 set_type_definition(datetime, BrazilianDatetimeDefinition)
+
+my_dict = {
+    'datetime': '2019-03-06 15:36:21',
+}
+
+obj = from_dict(obj, MyObject)
+
+assert obj.datetime == datetime(2019, 3, 6, 18, 36, 21, tzinfo=tzutc())
 ```
