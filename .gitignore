@@ -3,3 +3,6 @@
 __pycache__/
 venv/
 *.pyc
+py_jobject.egg-info/
+build/
+dist/
