@@ -17,7 +17,11 @@ class FloatDefinition:
         Converts to a dictionary data.
         """
 
-        return float(source)
+        try:
+            return float(source)
+
+        except ValueError:
+            return None
 
     @staticmethod
     def from_dict(source):
@@ -25,4 +29,8 @@ class FloatDefinition:
         Converts from a dictionary data.
         """
 
-        return float(source)
+        try:
+            return float(source)
+
+        except ValueError:
+            return None

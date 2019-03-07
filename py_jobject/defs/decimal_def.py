@@ -2,7 +2,7 @@
 `Decimal` definitions module.
 """
 
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 
 __all__ = [
     'DecimalDefinition'
@@ -19,7 +19,11 @@ class DecimalDefinition:
         Converts to a dictionary data.
         """
 
-        return float(source)
+        try:
+            return float(source)
+
+        except ValueError:
+            return None
 
     @staticmethod
     def from_dict(source):
@@ -27,4 +31,8 @@ class DecimalDefinition:
         Converts from a dictionary data.
         """
 
-        return Decimal(source)
+        try:
+            return Decimal(source)
+
+        except InvalidOperation:
+            return None

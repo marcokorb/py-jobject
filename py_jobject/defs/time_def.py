@@ -3,6 +3,7 @@
 """
 
 from datetime import datetime
+from ..util import datetime_to_dict
 
 __all__ = [
     'TimeDefinition'
@@ -19,7 +20,7 @@ class TimeDefinition:
         Converts to a dictionary data.
         """
 
-        return source.strftime('%H:%M:%S')
+        return datetime_to_dict(source, '%H:%M:%S')
 
     @staticmethod
     def from_dict(source):
@@ -27,4 +28,8 @@ class TimeDefinition:
         Converts from a dictionary data.
         """
 
-        return datetime.strptime(source, '%H:%M:%S').time()
+        try:
+            return datetime.strptime(source, '%H:%M:%S').time()
+
+        except ValueError:
+            return None

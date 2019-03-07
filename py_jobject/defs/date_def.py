@@ -3,6 +3,7 @@
 """
 
 from datetime import datetime
+from ..util import datetime_to_dict
 
 __all__ = [
     'DateDefinition'
@@ -19,7 +20,7 @@ class DateDefinition:
         Converts to a dictionary data.
         """
 
-        return source.strftime('%Y-%m-%d')
+        return datetime_to_dict(source, '%Y-%m-%d')
 
     @staticmethod
     def from_dict(source):
@@ -27,4 +28,8 @@ class DateDefinition:
         Converts from a dictionary data.
         """
 
-        return datetime.strptime(source, '%Y-%m-%d').date()
+        try:
+            return datetime.strptime(source, '%Y-%m-%d').date()
+
+        except ValueError:
+            return None

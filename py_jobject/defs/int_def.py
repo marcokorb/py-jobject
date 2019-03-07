@@ -17,7 +17,11 @@ class IntDefinition:
         Converts to a dictionary data.
         """
 
-        return int(source)
+        try:
+            return int(source)
+
+        except ValueError:
+            return None
 
     @staticmethod
     def from_dict(source):
@@ -25,4 +29,8 @@ class IntDefinition:
         Converts from a dictionary data.
         """
 
-        return int(source)
+        try:
+            return int(source)
+
+        except ValueError:
+            return None
