@@ -2,6 +2,10 @@
 
 A package to easily convert between Python objects and JSON-compatible dictionaries, with built-in type conversion.
 
+# Installation
+
+`pip install py-object`
+
 # Usage
 
 - Declare a class with type-annotated attributes:
