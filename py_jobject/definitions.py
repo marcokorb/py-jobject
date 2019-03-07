@@ -24,7 +24,7 @@ __all__ = [
     'set_type_definition'
 ]
 
-TYPE_DEFINITIONS = {
+STATIC_TYPE_DEFINITIONS = {
     date: DateDefinition(),
     datetime: DatetimeDefinition(),
     Decimal: DecimalDefinition(),
@@ -39,7 +39,7 @@ def get_type_definition(type_):
     Gets a type definition.
     """
 
-    definition = TYPE_DEFINITIONS.get(type_)
+    definition = STATIC_TYPE_DEFINITIONS.get(type_)
     if definition is None:
         if type_.__name__ == List.__name__:
             return ListDefinition(type_.__args__[0])
@@ -50,10 +50,3 @@ def get_type_definition(type_):
         raise UndefinedTypeError(type_)
 
     return definition
-
-def set_type_definition(type_, definition):
-    """
-    Sets a type definition.
-    """
-
-    TYPE_DEFINITIONS[type_] = definition
