@@ -20,8 +20,7 @@ from .defs import (
 from .errors import UndefinedTypeError
 
 __all__ = [
-    'get_type_definition',
-    'set_type_definition'
+    'get_type_definition'
 ]
 
 STATIC_TYPE_DEFINITIONS = {
