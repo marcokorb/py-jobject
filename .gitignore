@@ -1,5 +1,6 @@
 .pytest_cache/
 .vscode/
+.idea/
 __pycache__/
 venv/
 *.pyc
